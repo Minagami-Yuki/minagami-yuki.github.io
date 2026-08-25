@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Zhu (朱 帆) | Homepage</title>
+    <link rel="icon" href="assets/profile.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* --- 全局样式 (Global Style) --- */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* --- 头部 (Header) --- */
+        header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .avatar {
+            width: auto;
+            /* height: 120px; */
+            height: 275px;
+            border-radius: 0;
+            object-fit: contain;
+            margin-right: 30px;
+            background-color: #eee;
+        }
+        .header-info h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            font-family: 'STKaiti', 'KaiTi', 'FZKai-Z03', '楷体', '仿宋', 'FangSong', serif, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .header-info p { margin: 5px 0; color: #666; }
+
+        .intro-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .institution-logos {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .institution-logos img {
+            width: 82px;
+            height: 58px;
+            object-fit: contain;
+        }
+        .institution-logos img[src$="ustc.jpg"] {
+            width: 58px;
+        }
+        .institution-logos img[src$="jsps.png"] {
+            width: 120px;
+        }
+
+        /* --- 单位logo美化 --- */
+        .org-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            gap: 12px;
+        }
+        .org-logo {
+            width: 80px;
+            height: 32px;
+            object-fit: contain;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .org-logo.ustc-logo {
+            width: 40px;
+            height: 40px;
+            margin-top: 0;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .org-info {
+            flex: 1;
+            display: block;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .org-info .advisor-link {
+            white-space: nowrap;
+        }
+        /* --- 各机构邮箱小图标 (per-org email icon) --- */
+        .org-mail {
+            font-size: 0.65em;
+            vertical-align: super;
+            margin-left: 3px;
+            color: #0000CD;
+        }
+        .org-mail:hover { text-decoration: none; color: #d9534f; }
+        .org-award {
+            display: block;
+            margin-top: 6px;
+            margin-left: -90px;
+            color: #e141a1;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .institution-logos {
+                gap: 14px;
+            }
+            .org-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .org-logo,
+            .org-logo.ustc-logo {
+                margin-top: 0;
+            }
+            .org-info .advisor-link {
+                white-space: normal;
+            }
+        }
+
+        /* --- 单位logo背景叠加 --- */
+        .org-bg {
+            position: relative;
+            padding: 16px 18px 12px 18px;
+            margin-bottom: 10px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .org-bg-logo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.13;
+            height: 60px;
+            max-width: 120px;
+            object-fit: contain;
+            pointer-events: none;
+        }
+        .org-bg-content {
+            position: relative;
+            z-index: 1;
+        }
+        @media (max-width: 600px) {
+            .org-bg-logo { height: 36px; max-width: 80px; }
+            .org-bg { padding: 10px 8px 8px 8px; }
+        }
+
+        /* --- 章节通用 (Sections) --- */
+        section { margin-bottom: 40px; }
+        h2 {
+            font-size: 1.5rem;
+            border-left: 4px solid #0066cc;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* --- 新闻列表 (News) --- */
+        .news-list { list-style: none; padding: 0; }
+        .news-item { margin-bottom: 10px; display: flex; }
+        .news-date {
+            font-weight: bold;
+            min-width: 100px;
+            color: #555;
+            font-family: monospace;
+        }
+
+        /* --- 论文列表 (Publications) --- */
+        .pub-list { list-style: none; padding: 0; }
+        .pub-item { margin-bottom: 20px; }
+        .pub-title { font-weight: bold; font-size: 1.1rem; }
+        .pub-authors { color: #555; font-style: italic; }
+        .pub-venue { color: #d9534f; font-weight: 500; } /* 会议名用红色突出 */
+        .pub-links { font-size: 0.9rem; }
+        
+        /* --- 响应式调整 (Mobile) --- */
+        @media (max-width: 600px) {
+            header { flex-direction: column; text-align: center; }
+            .avatar { margin-right: 0; margin-bottom: 15px; }
+            .news-item { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="assets/fanzhu.png" alt="Profile Photo" class="avatar">
+        
+        <div class="header-info">
+            <h1>Fan Zhu (朱 帆)</h1>
+            <div class="intro-text">
+                I am currently a first-year Ph.D. student at
+                <a href="https://www.tohoku.ac.jp/en/">Tohoku University</a>, starting from April 2026, and supervised by Prof.
+                <a href="https://scholar.google.com/citations?user=gn780jcAAAAJ&amp;hl=zh-CN&amp;oi=ao">OKATANI Takayuki</a>.
+                Prior to that, I graduated from
+                <a href="https://en.ustc.edu.cn/">University of Science and Technology of China (USTC)</a>
+                in June 2025. I also worked as a Research Assistant at the University of Science and Technology of China and
+                Hefei Institute of Physical Science, Chinese Academy of Sciences, from July 2025 to March 2026.
+            </div>
+            <div class="institution-logos" aria-label="Affiliated institutions">
+                <img src="assets/TohokuU.png" alt="Tohoku University">
+                <img src="assets/cas.jpg" alt="Chinese Academy of Sciences">
+                <img src="assets/ustc.jpg" alt="University of Science and Technology of China">
+                <img src="assets/jsps.png" alt="JSPS">
+            </div>
+            <!-- <div class="org-row">
+                <img src="assets/TohokuU.png" alt="TohokuU Logo" class="org-logo">
+                <span class="org-info">
+                    Ph.D.<a class="org-mail" href="mailto:zhu.fan.t8@dc.tohoku.ac.jp" title="zhu.fan.t8@dc.tohoku.ac.jp"><i class="fas fa-envelope"></i></a>
+                    @ Tohoku University, Advisor:
+                    <a class="advisor-link" href="https://scholar.google.com/citations?user=gn780jcAAAAJ&hl=zh-CN&oi=ao" target="_blank">
+                        Takayuki Okatani
+                    </a>
+                </span>
+            </div>
+
+            <div class="org-row">
+                <img src="assets/cas.jpg" alt="CAS Logo" class="org-logo">
+                <span class="org-info">
+                    Research Fellow<a class="org-mail" href="mailto:zhufan_misaki@mail.ustc.edu.cn" title="zhufan_misaki@mail.ustc.edu.cn"><i class="fas fa-envelope"></i></a>
+                    @ College of Computing and Data Science (CCDS), Chinese Academy of Sciences (CAS), Advisor:
+                    <a class="advisor-link" href="https://scholar.google.com/citations?user=_Pvgwd0AAAAJ&hl=en&oi=ao" target="_blank">Yang Liu</a>
+                </span>
+            </div>
+
+            <div class="org-row">
+                <img src="assets/ustc.jpg" alt="USTC Logo" class="org-logo ustc-logo">
+                <span class="org-info">
+                    Ph.D.<a class="org-mail" href="mailto:zhufan_misaki@mail.ustc.edu.cn" title="zhufan_misaki@mail.ustc.edu.cn"><i class="fas fa-envelope"></i></a>
+                    @ National Engineering Research Center (NERC-SLIP), University of Science and Technology of China (USTC), Advisor:
+                    <a class="advisor-link" href="https://scholar.google.com/citations?user=uDtOVBAAAAAJ&hl=zh-CN&oi=ao" target="_blank">Zengfu Wang</a>
+                    <span class="org-award">
+                        USTC “Guo Yonghuai” Scholarship (中科大郭永怀奖), CAS President's Award (中科院院长奖), The National Scholarship (国家奖学金) x 4
+                    </span>
+                </span>
+            </div> -->
+        <!-- </div> -->
+    <!-- </header> -->
+<p>
+    <a href="https://scholar.google.com/citations?user=dCehu_YAAAAJ&hl=zh-CN"
+       target="_blank"
+       style="display:inline-flex;align-items:center;margin-right:12px;">
+        <i class="fas fa-graduation-cap" style="font-size:1.1em;margin-right:6px;"></i>
+        [Google Scholar]
+    </a>
+
+    <a href="https://orcid.org/0009-0000-3140-3134"
+       target="_blank"
+       style="display:inline-flex;align-items:center;margin-right:12px;">
+        <i class="ai ai-orcid" style="font-size:1.1em;margin-right:6px;"></i>
+        [ORCID]
+    </a>
+    
+    <a href="https://github.com/Minagami-Yuki"
+       target="_blank"
+       style="display:inline-flex;align-items:center;margin-right:12px;">
+        <i class="fab fa-github" style="font-size:1.1em;margin-right:6px;"></i>
+        [GitHub] 
+    </a>
+
+    <a href="mailto:zhufan_misaki@mail.ustc.edu.cn"
+       style="display:inline-flex;align-items:center;margin-right:12px;">
+        <i class="fas fa-envelope" style="font-size:1.1em;margin-right:6px;"></i>
+        [Email]
+    </a>
+</p>
+
+    </div>
+    </header>
+
+    <section>
+        <h2>About Me</h2>
+        <p>
+            My research interests include <strong>Gaussian Splatting</strong>, <strong>Visual SLAM</strong>, and <strong>3D Reconstruction</strong>. 
+            My research goal is to recover 3D scenes from 2D images📸 and make the robot understand the information better🤖.
+        </p>
+        <p style="color: #d9534f; font-weight: bold; font-size: 1.1rem;">
+        🤝 Feel free to reach out if you are interested in collaborating on my research!<br> 
+        🔎 I am looking for a possible visit opportunity for about half a year (fully funded by JSPS).
+        </p>
+    </section>
+
+
+    <section>
+    <h2>
+        <i class="fas fa-bullhorn" style="font-size: 0.9em; margin-right: 6px;"></i>
+        News
+    </h2>
+
+    <ul class="news-list">
+        <li class="news-item">
+            <span class="news-date">2026.06</span>
+            <span>🎉🎉 One paper (FGO-SLAM++) has been accepted by TVCG. It is a great honor to be guided by Prof. <a href='https://scholar.google.com/citations?user=_D9aUrgAAAAJ&hl=zh-CN&oi=ao'>Juyong Zhang</a>.</span>
+        </li>
+
+        <li class="news-item">
+            <span class="news-date">2026.06</span>
+            <span>🎉🎉 One paper (MyGO-Splat) has been accepted by IROS 2026. I am honored to work with Dr. <a href='https://scholar.google.com/citations?user=f5AEO48AAAAJ&hl=zh-CN&oi=ao'>Zhenjun Zhao</a> and Prof. <a href='https://scholar.google.com/citations?user=j_sMzokAAAAJ&hl=zh-CN'>Javier Civera</a>.</span>
+        </li>
+
+        <li class="news-item">
+            <span class="news-date">2026.05</span>
+            <span>🎉🎉 LR-SGS has been recommended as ICRA Award Finalists (Only 36). </span>
+        </li>
+        <li class="news-item">
+            <span class="news-date">2026.03</span>
+            <span>I received the Ph.D. admission letter from Tohoku University and the notification of selection for the Next-Generation AI Expert Development Project (BOOST). 💐💐 See you in Sendai!  </span>
+        </li>
+
+        <li class="news-item">
+            <span class="news-date">2026.02</span>
+            <span>Two papers (MMD-SLAM, LR-SGS) have been accepted by ICRA 2026, congrats to the team. 🎉🎉 See you in Vienna!.</span>
+        </li>
+
+        <li class="news-item">
+            <span class="news-date">2025.06</span>
+            <span>I obtained a master's degree and was recommended as an outstanding dissertation. 💐💐</span>
+        </li>
+
+        <li class="news-item">
+            <span class="news-date">2025.01</span>
+            <span>🎉🎉 One paper (FGO-SLAM) has been accepted by ICRA 2025. </span>
+        </li>
+    </ul>
+    </section>
+
+    <section>
+        <h2>📝 Publications</h2>
+        <ul class="pub-list" style="list-style: disc; padding-left: 20px;">
+            <!-- 会议论文 Conference Papers -->
+            <h3>Conference Papers</h2>
+            <li class="pub-item">
+                <strong>IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) </strong> | 2026, <strong>CORE A</strong>，<span style="color:#ee250a;font-weight:bold;">Oral</span><br>
+                <span>MyGO-Splat: Multi-Objective Closed-Loop Geometric Feedback for RGB-Only Gaussian SLAM</span><br>
+                <span style="font-size:0.95em;"><strong>Fan Zhu</strong>, Ziyu Chen, Zhenjun Zhao, Zhisong Xu, Hui Zhu, Mingrui Li, Chunmao Jiang, Javier Civera</span>
+            </li>
+            <li class="pub-item">
+                <strong>IEEE International Conference on Robotics and Automation (ICRA) </strong> | 2026, <strong>CORE A*</strong>，<span style="color:#ee250a;font-weight:bold;">Best Paper Award</span><br>
+                <span>LR-SGS: Robust LiDAR-Reflectance-Guided Salient Gaussian Splatting for Self-Driving Scene Reconstruction</span><br>
+                <span style="font-size:0.95em;">Ziyu Chen<sup>*</sup>, <strong>Fan Zhu<sup>*</sup></strong>, Hui Zhu, Deyi Kong, Xinkai Kuang, Yujia Zhang, Chunmao Jiang</span>
+            </li>
+            <li class="pub-item">
+                <strong>IEEE International Conference on Robotics and Automation (ICRA) </strong> | 2026, <strong>CORE A*</strong><br>
+                <span>MMD-SLAM: Structure-Enhanced Multi-Meta Gaussian Distribution-Guided Visual SLAM</span><br>
+                <span style="font-size:0.95em;"><strong>Fan Zhu</strong>, Ziyu Chen, Peichen Liu, Yifan Zhao, Zhisong Xu, Hui Zhu, Hongxing Zhou, Sixun Liu, Chunmao Jiang</span>
+            </li>
+            <li class="pub-item">
+                <strong>IEEE International Conference on Robotics and Automation (ICRA) </strong> | 2025, <strong>CORE A*</strong>，<span style="color:#ee250a;font-weight:bold;">Oral</span><br>
+                <span>FGO-SLAM: Enhancing Gaussian SLAM with Globally Consistent Opacity Radiance Field</span><br>
+                <span style="font-size:0.95em;"><strong>Fan Zhu</strong>, Yifan Zhao, Ziyu Chen, Biao Yu, Hui Zhu</span>
+            </li>
+            
+            <!-- 期刊论文 Journal Papers -->
+             <h3>Journal Papers</h2>
+            <li class="pub-item">
+                <strong>IEEE Transactions on Visualization and Computer Graphics (TVCG) </strong> | 2026, <strong>JCR Q1</strong><br>
+                <span>FGO-SLAM++: Real-time Geometry-Aware Gaussian SLAM with Continuous Opacity Field</span><br>
+                <span style="font-size:0.95em;"> <strong>Fan Zhu</strong>, Yifan Zhao, Ziyu Chen, Peichen Liu, Hui Zhu, Chunmao Jiang, Juyong Zhang</span>
+            </li>            
+            <li class="pub-item">
+                <strong>Remote Sensing</strong> | 2025, <strong>JCR Q1</strong><br>
+                <span>DyGS-SLAM: Realistic Map Reconstruction in Dynamic Scenes based on Double-Constrained Visual SLAM</span><br>
+                <span style="font-size:0.95em;"> <strong>Fan Zhu</strong>, Yifan Zhao, Ziyu Chen, Chunmao Jiang, Hui Zhu, Xiaoxi Hu</span>
+            </li>
+            <li class="pub-item">
+                <strong>Measurement Science and Technology</strong> | 2024,  <strong>JCR Q1</strong><br>
+                <span>SLM-SLAM: A Visual SLAM sSystem based on Segmented Large-Scale Model in Dynamic Scenes and Zero-Shot Conditions</span><br>
+                <span style="font-size:0.95em;"> <strong>Fan Zhu</strong>, Ziyu Chen, Chunmao Jiang, Liwei Xu, Shijin Zhang, Biao Yu, Hui Zhu</span>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>💰 Funding Projects</h2>
+        <ul style="list-style: disc; padding-left: 20px;">
+            <li><strong>2026</strong> Next-Generation AI Expert Development Project (BOOST), (Ongoing), <strong>PI</strong></li>
+            <li><strong>2025</strong> HFIPS Director’s Fund (Ongoing), <strong>Participant</strong></li>
+            <li><strong>2025</strong> Anhui Province Key Research and Development Plan under Grant  (Ongoing), <strong>Participant</strong></li>
+            <!-- <li><strong>2023</strong> USTC Innovation Fund (Completed, Outstanding), <strong>PI</strong></li>
+            <li><strong>2021</strong> The CAS Strategic Priority Research Program (Completed), <strong>Participant</strong></li> -->
+        </ul>
+    </section>
+
+    <section>
+    <h2>🏆 Honours & Awards</h2>
+    <ul style="list-style: disc; padding-left: 20px;">
+
+        <li>
+           <strong>USTC Outstanding Master's Thesis</strong>
+           <span style="color:#555;">✨ </span>
+        </li>
+
+        <li>
+            <strong>USTC Academic Scholarship</strong>
+            <span style="color:#555;">✨ </span>
+        </li>
+
+    </ul>
+</section>
+
+
+<section>
+    <h2>💻 Services & Review</h2>
+    <ul style="list-style: disc; padding-left: 20px;">
+        <li>IEEE International Conference on Robotics and Automation (ICRA)</li>
+        <li>IEEE Transactions on Instrumentation and Measurement</li>
+        <li>ISPRS Journal of Photogrammetry and Remote Sensing</li>
+        <li>Neurocomputing</li>
+        <li>Displays</li>
+        <li>Measurement Science and Technology</li>
+</section>
+
+<footer>
+    <!-- <div style="width:100%;text-align:center;margin-top:80px;"> -->
+        <!-- MapMyVisitors 3D Globe（小尺寸，居中） -->
+        <!-- <div style="display:inline-block;width:150px;height:150px;max-width:100%;"> -->
+            <!-- <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=ffffff&w=a&t=tt&d=qbd98wtxwRGTWj3OrdWzORWJKXJcyYGyzGtPKJh0-gM&cmn=ec7c8d&cmo=f10b0b'></script> -->
+        <!-- </div> -->
+    <!-- </div> -->
+
+    <p style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 50px;">
+        &copy; YuishikiFan.
+    </p>
+</footer>
+</body>
+</html>
